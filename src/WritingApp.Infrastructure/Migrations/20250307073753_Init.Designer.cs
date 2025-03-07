@@ -12,7 +12,7 @@ using WritingApp.Infrastructure.Persistence;
 namespace WritingApp.Infrastructure.Migrations
 {
     [DbContext(typeof(WritingsDbContext))]
-    [Migration("20250305095045_Init")]
+    [Migration("20250307073753_Init")]
     partial class Init
     {
         /// <inheritdoc />

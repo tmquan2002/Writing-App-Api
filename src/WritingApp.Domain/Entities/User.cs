@@ -4,7 +4,6 @@ namespace WritingApp.Domain.Entities;
 
 public class User : IdentityUser
 {
-    public Guid Id { get; set; }
     public string? Fullname { get; set; }
     public DateOnly DateOfBirth { get; set; }
     public string? Nationality { get; set; }

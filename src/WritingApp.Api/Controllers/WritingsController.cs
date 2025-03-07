@@ -12,6 +12,7 @@ namespace WritingApp.API.Controllers;
 public class WritingsController(IWritingService writingService) : ControllerBase
 {
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll()
     {
         var writings = await writingService.GetAllAsync();
@@ -19,6 +20,7 @@ public class WritingsController(IWritingService writingService) : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetById(int id)
     {
         var writing = await writingService.GetByIdAsync(id);
