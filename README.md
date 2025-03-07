@@ -1,6 +1,7 @@
 # Writings API
 
-This is a .NET 8.0 web API for managing writings, following the principles of Clean Architecture.
+- This is a .NET 8.0 web API for managing writings, following the principles of Clean Architecture.
+- Learnt and built based on jakubkozera repository: [https://github.com/jakubkozera/Restaurants](https://github.com/jakubkozera/Restaurants)
 
 ## Project Structure
 
