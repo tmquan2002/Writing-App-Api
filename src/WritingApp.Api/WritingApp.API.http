@@ -1,0 +1,26 @@
+@host = http://localhost
+@port = 5240
+@WritingApp.API_HostAddress = http://localhost:5240
+
+
+POST {{WritingApp.API_HostAddress}}/api/writing/add
+Content-Type: application/json
+
+{
+  "id": 45,
+  "title": "ndj",
+  "publishedDate": "2025-02-27",
+  "description": "xxd",
+  "completed": true,
+  "userId": 12234
+}
+
+###
+
+GET {{WritingApp.API_HostAddress}}/api/writing/get/12
+
+###
+
+GET {{WritingApp.API_HostAddress}}/api/writing/getFilter
+
+###
