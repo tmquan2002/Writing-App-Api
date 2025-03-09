@@ -13,9 +13,10 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
         {
             Id = w.Id,
             Title = w.Title,
-            Type = w.Type,
+            Type = w.Type ?? "",
             PublishedDate = w.PublishedDate,
-            Description = w.Description,
+            Description = w.Description ?? "",
+            Article = w.Article ?? "",
             Completed = w.Completed,
             UserId = w.UserId
         });
@@ -28,9 +29,10 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
         {
             Id = writing.Id,
             Title = writing.Title,
-            Type = writing.Type,
+            Type = writing.Type ?? "",
             PublishedDate = writing.PublishedDate,
-            Description = writing.Description,
+            Description = writing.Description ?? "",
+            Article = writing.Article ?? "",
             Completed = writing.Completed,
             UserId = writing.UserId
         };
@@ -44,6 +46,7 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
             Type = writing.Type,
             PublishedDate = writing.PublishedDate,
             Description = writing.Description,
+            Article = writing.Article,
             Completed = writing.Completed,
             UserId = userId
         };

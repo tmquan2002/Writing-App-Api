@@ -24,5 +24,6 @@ public static class ServiceCollectionExtensions
             .AddEntityFrameworkStores<WritingsDbContext>();
 
         services.AddScoped<IWritingsRepository, WritingsRepository>();
+        services.AddScoped<IAuthRepository, AuthRepository>();
     }
 }

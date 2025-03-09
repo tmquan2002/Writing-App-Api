@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using WritingApp.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using WritingApp.Infrastructure.Persistence;
 namespace WritingApp.Infrastructure.Migrations
 {
     [DbContext(typeof(WritingsDbContext))]
-    partial class WritingsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250308165612_Add-Article")]
+    partial class AddArticle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
