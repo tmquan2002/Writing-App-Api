@@ -5,6 +5,6 @@ namespace WritingApp.Domain.Repositories;
 
 public interface IAuthRepository
 {
-    Task<IdentityResult> RegisterUserAsync(User user, string password);
-    Task<User?> GetByEmail(string email);
+    Task<User?> GetInfo(string userId);
+    Task<IdentityResult> UpdateInfo(User user);
 }

@@ -1,18 +1,18 @@
-﻿using WritingApp.Domain.Entities;
+﻿using Microsoft.AspNetCore.Identity;
+using WritingApp.Domain.Entities;
 using WritingApp.Domain.Repositories;
-using Microsoft.AspNetCore.Identity;
 
 namespace WritingApp.Infrastructure.Repositories;
 
 internal class AuthRepository(UserManager<User> userManager) : IAuthRepository
 {
-    public async Task<User?> GetByEmail(string email)
+    public async Task<User?> GetInfo(string userId)
     {
-        return await userManager.FindByEmailAsync(email);
+        return await userManager.FindByIdAsync(userId);
     }
 
-    public async Task<IdentityResult> RegisterUserAsync(User user, string password)
+    public async Task<IdentityResult> UpdateInfo(User user)
     {
-        return await userManager.CreateAsync(user, password);
+        return await userManager.UpdateAsync(user);
     }
 }

@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using WritingApp.Application.Auth.Dtos;
+﻿using WritingApp.Application.Auth.Dtos;
 
 namespace WritingApp.Application.Auth.Services;
 
 public interface IAuthService
 {
-    Task<IdentityResult> Register(RegisterDto model);
+    Task<UserDto?> GetInfo(string userId);
+    Task<bool> UpdateInfo(string userId, UpdateUserDto userDto);
 }

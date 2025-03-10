@@ -62,8 +62,7 @@ app.UseHttpsRedirection();
 
 app.MapGroup("api/auth")
     .WithTags("Auth")
-    .MapIdentityApi<User>()
-    .Excl("/register");
+    .MapIdentityApi<User>();
 
 app.UseAuthentication();
 app.UseAuthorization();

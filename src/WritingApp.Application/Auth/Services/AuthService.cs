@@ -1,24 +1,34 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using WritingApp.Application.Auth.Dtos;
-using WritingApp.Domain.Entities;
+﻿using WritingApp.Application.Auth.Dtos;
 using WritingApp.Domain.Repositories;
 
 namespace WritingApp.Application.Auth.Services;
 
 public class AuthService(IAuthRepository authRepository) : IAuthService
 {
-    public async Task<IdentityResult> Register([FromBody] RegisterDto body)
+    public async Task<UserDto?> GetInfo(string userId)
     {
-        var user = new User
+        var user = await authRepository.GetInfo(userId);
+        return user == null ? null : new UserDto
         {
-            Email = body.Email,
-            Fullname = body.Fullname,
-            DateOfBirth = body.DateOfBirth,
-            Nationality = body.Nationality,
-            Gender = body.Gender
+            Email = user.Email ?? "",
+            DateOfBirth = user.DateOfBirth,
+            Fullname = user.Fullname ?? "",
+            Gender = user.Gender ?? "",
+            Nationality = user.Nationality ?? ""
         };
+    }
 
-        return await authRepository.RegisterUserAsync(user, body.Password);
+    public async Task<bool> UpdateInfo(string userId, UpdateUserDto userDto)
+    {
+        var currentUser = await authRepository.GetInfo(userId);
+        if (currentUser == null) return false;
+
+        currentUser.Fullname = userDto.Fullname;
+        currentUser.DateOfBirth = userDto.DateOfBirth;
+        currentUser.Gender = userDto.Gender;
+        currentUser.Nationality = userDto.Nationality;
+
+        await authRepository.UpdateInfo(currentUser);
+        return true;
     }
 }

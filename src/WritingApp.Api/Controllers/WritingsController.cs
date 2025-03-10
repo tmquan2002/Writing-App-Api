@@ -48,7 +48,7 @@ public class WritingsController(IWritingService writingService) : ControllerBase
         var result = await writingService.UpdateAsync(id, dto);
         if (!result) return NotFound();
 
-        return NoContent();
+        return Ok();
     }
 
     [HttpDelete("{id}")]
@@ -57,6 +57,6 @@ public class WritingsController(IWritingService writingService) : ControllerBase
         var result = await writingService.DeleteAsync(id);
         if (!result) return NotFound();
 
-        return NoContent();
+        return Ok();
     }
 }

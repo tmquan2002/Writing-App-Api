@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WritingApp.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WritingApp.Application.Auth.Dtos
 {
@@ -17,16 +11,22 @@ namespace WritingApp.Application.Auth.Dtos
         [Required]
         public string Password { get; set; } = string.Empty;
     }
-    public class RegisterDto
+
+    public class UserDto
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = string.Empty;
-        [Required]
-        public string Password { get; set; } = string.Empty;
-        public string? Fullname { get; set; } = "";
+        public required string Email { get; set; }
+        public string? Fullname { get; set; }
         public DateOnly DateOfBirth { get; set; }
-        public string? Nationality { get; set; } = "";
-        public string? Gender { get; set; } = "";
+        public string? Nationality { get; set; }
+        public string? Gender { get; set; }
     }
+
+    public class UpdateUserDto
+    {
+        public required string Fullname { get; set; }
+        public required DateOnly DateOfBirth { get; set; }
+        public string? Nationality { get; set; }
+        public string? Gender { get; set; }
+    }
+
 }
