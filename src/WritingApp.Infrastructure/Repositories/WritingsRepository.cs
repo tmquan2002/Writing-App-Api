@@ -11,12 +11,14 @@ internal class WritingsRepository(WritingsDbContext dbContext) : IWritingsReposi
     {
         return await dbContext.Writings
             .Include(w => w.Author)
+            .Where(w => w.Completed)
             .ToListAsync();
     }
 
     public async Task<Writing?> GetByIdAsync(int id)
     {
         return await dbContext.Writings
+            .Include(w => w.Author)
             .Where(w => w.Id == id && w.Completed)
             .FirstOrDefaultAsync();
     }

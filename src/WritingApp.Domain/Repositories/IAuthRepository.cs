@@ -5,6 +5,7 @@ namespace WritingApp.Domain.Repositories;
 
 public interface IAuthRepository
 {
+    //Task login()
     Task<User?> GetInfo(string userId);
     Task<IdentityResult> UpdateInfo(User user);
 }
