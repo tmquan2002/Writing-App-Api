@@ -18,7 +18,7 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
             Description = w.Description ?? "",
             Article = w.Article ?? "",
             Completed = w.Completed,
-            UserId = w.UserId
+            Author = w.Author?.Fullname ?? ""
         });
     }
 
@@ -34,7 +34,7 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
             Description = writing.Description ?? "",
             Article = writing.Article ?? "",
             Completed = writing.Completed,
-            UserId = writing.UserId
+            Author = writing.Author?.Fullname ?? ""
         };
     }
 

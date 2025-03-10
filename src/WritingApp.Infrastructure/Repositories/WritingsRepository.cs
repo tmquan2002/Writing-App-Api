@@ -9,7 +9,9 @@ internal class WritingsRepository(WritingsDbContext dbContext) : IWritingsReposi
 {
     public async Task<IEnumerable<Writing>> GetAllAsync()
     {
-        return await dbContext.Writings.ToListAsync();
+        return await dbContext.Writings
+            .Include(w => w.Author)
+            .ToListAsync();
     }
 
     public async Task<Writing?> GetByIdAsync(int id)

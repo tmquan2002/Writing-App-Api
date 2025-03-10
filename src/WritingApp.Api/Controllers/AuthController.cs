@@ -8,10 +8,10 @@ namespace WritingApp.API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
+[Authorize]
 public class AuthController(IAuthService authService) : ControllerBase
 {
     [HttpGet("me")]
-    [Authorize]
     public async Task<IActionResult> GetCurrent()
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -23,8 +23,17 @@ public class AuthController(IAuthService authService) : ControllerBase
         return Ok(user);
     }
 
+    [HttpGet("user/{id}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetUserById(string id)
+    {
+        var user = await authService.GetInfo(id);
+        if (user == null) return NotFound("User not found");
+
+        return Ok(user);
+    }
+
     [HttpPut("me")]
-    [Authorize]
     public async Task<IActionResult> UpdateInfo([FromBody] UpdateUserDto dto)
     {
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

@@ -10,6 +10,7 @@
         public string Article { get; set; } = "";
         public bool Completed { get; set; }
         public string UserId { get; set; } = "";
+        public string Author { get; set; } = "";
     }
 
     public class WritingCreateDto
