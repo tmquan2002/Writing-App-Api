@@ -14,7 +14,9 @@ internal class WritingsRepository(WritingsDbContext dbContext) : IWritingsReposi
 
     public async Task<Writing?> GetByIdAsync(int id)
     {
-        return await dbContext.Writings.FindAsync(id);
+        return await dbContext.Writings
+            .Where(w => w.Id == id && w.Completed)
+            .FirstOrDefaultAsync();
     }
 
     public async Task AddAsync(Writing writing)
