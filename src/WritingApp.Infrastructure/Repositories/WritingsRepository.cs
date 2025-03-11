@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Domain.Entities;
-using WritingApp.Domain.Repositories;
 using WritingApp.Infrastructure.Persistence;
 
 namespace WritingApp.Infrastructure.Repositories;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Domain.Entities;
-using WritingApp.Domain.Repositories;
 
 namespace WritingApp.Infrastructure.Repositories;
 

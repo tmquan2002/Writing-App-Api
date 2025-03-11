@@ -1,6 +1,6 @@
-﻿using WritingApp.Application.Auth.Dtos;
+﻿using WritingApp.Application.Dto.Auths;
 
-namespace WritingApp.Application.Auth.Services;
+namespace WritingApp.Application.Interfaces.Services;
 
 public interface IAuthService
 {

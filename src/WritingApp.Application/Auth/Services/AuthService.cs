@@ -1,5 +1,6 @@
-﻿using WritingApp.Application.Auth.Dtos;
-using WritingApp.Domain.Repositories;
+﻿using WritingApp.Application.Dto.Auths;
+using WritingApp.Application.Interfaces.Repository;
+using WritingApp.Application.Interfaces.Services;
 
 namespace WritingApp.Application.Auth.Services;
 

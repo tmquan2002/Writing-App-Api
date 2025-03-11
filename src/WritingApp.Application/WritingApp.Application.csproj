@@ -17,4 +17,8 @@
     <ProjectReference Include="..\WritingApp.Domain\WritingApp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interactor\" />
+  </ItemGroup>
+
 </Project>

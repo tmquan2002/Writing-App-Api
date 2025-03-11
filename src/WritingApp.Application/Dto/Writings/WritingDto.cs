@@ -1,4 +1,4 @@
-﻿namespace WritingApp.Application.Writings.Dtos
+﻿namespace WritingApp.Application.Dto.Writings
 {
     public class WritingDto
     {

@@ -1,6 +1,7 @@
-﻿using WritingApp.Application.Writings.Dtos;
+﻿using WritingApp.Application.Dto.Writings;
+using WritingApp.Application.Interfaces.Repository;
+using WritingApp.Application.Interfaces.Services;
 using WritingApp.Domain.Entities;
-using WritingApp.Domain.Repositories;
 
 namespace WritingApp.Application.Writings.Services;
 

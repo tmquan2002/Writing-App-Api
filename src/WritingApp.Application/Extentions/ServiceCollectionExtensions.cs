@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using WritingApp.Application.Auth.Services;
+using WritingApp.Application.Interfaces.Services;
 using WritingApp.Application.Writings.Services;
 
 namespace WritingApp.Application.Extentions

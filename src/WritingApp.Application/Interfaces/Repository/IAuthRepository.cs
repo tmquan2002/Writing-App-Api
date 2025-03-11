@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using WritingApp.Domain.Entities;
 
-namespace WritingApp.Domain.Repositories;
+namespace WritingApp.Application.Interfaces.Repository;
 
 public interface IAuthRepository
 {

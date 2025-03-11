@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WritingApp.Application.Auth.Dtos
+namespace WritingApp.Application.Dto.Auths
 {
     public class AuthDto
     {

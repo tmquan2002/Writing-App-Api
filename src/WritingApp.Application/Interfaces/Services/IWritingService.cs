@@ -1,6 +1,6 @@
-﻿using WritingApp.Application.Writings.Dtos;
+﻿using WritingApp.Application.Dto.Writings;
 
-namespace WritingApp.Application.Writings.Services
+namespace WritingApp.Application.Interfaces.Services
 {
     public interface IWritingService
     {

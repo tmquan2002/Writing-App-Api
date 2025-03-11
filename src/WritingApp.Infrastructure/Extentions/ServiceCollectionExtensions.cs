@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Domain.Entities;
-using WritingApp.Domain.Repositories;
 using WritingApp.Infrastructure.Persistence;
 using WritingApp.Infrastructure.Repositories;
 

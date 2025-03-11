@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WritingApp.Application.Auth.Dtos;
-using WritingApp.Application.Auth.Services;
+using WritingApp.Application.Dto.Auths;
+using WritingApp.Application.Interfaces.Services;
 
 namespace WritingApp.API.Controllers;
 
