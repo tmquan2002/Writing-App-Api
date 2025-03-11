@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WritingApp.Application.ApplicationEntities;
 using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Domain.Entities;
 using WritingApp.Infrastructure.Persistence;
@@ -9,7 +10,7 @@ using WritingApp.Infrastructure.Repositories;
 
 namespace WritingApp.Infrastructure.Extentions;
 
-public static class ServiceCollectionExtensions
+public static class InfrastructureServiceCollectionExtensions
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
@@ -19,7 +20,7 @@ public static class ServiceCollectionExtensions
                 .EnableSensitiveDataLogging()
         );
 
-        services.AddIdentityApiEndpoints<User>()
+        services.AddIdentityApiEndpoints<ApplicationUser>()
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<WritingsDbContext>();
 

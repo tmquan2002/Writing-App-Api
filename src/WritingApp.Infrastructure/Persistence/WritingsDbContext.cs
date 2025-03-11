@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WritingApp.Application.ApplicationEntities;
 using WritingApp.Domain.Entities;
 namespace WritingApp.Infrastructure.Persistence;
 
 internal class WritingsDbContext(DbContextOptions<WritingsDbContext> options)
-    : IdentityDbContext<User>(options)
+    : IdentityDbContext<ApplicationUser>(options)
 {
     internal DbSet<Writing> Writings { get; set; }
 
@@ -12,10 +13,10 @@ internal class WritingsDbContext(DbContextOptions<WritingsDbContext> options)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<User>()
+        modelBuilder.Entity<ApplicationUser>()
             .HasMany(r => r.Writings)
-            .WithOne(r => r.Author)
-            .HasForeignKey(d => d.UserId);
+            .WithOne(r => (ApplicationUser)r.Author!)
+            .HasForeignKey(d => d.AuthorId);
 
         modelBuilder.Entity<Writing>(entity =>
         {
@@ -28,7 +29,7 @@ internal class WritingsDbContext(DbContextOptions<WritingsDbContext> options)
                 );
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<ApplicationUser>(entity =>
         {
 
             entity.Property(e => e.EmailConfirmed)
