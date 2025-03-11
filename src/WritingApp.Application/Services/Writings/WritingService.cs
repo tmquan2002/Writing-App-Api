@@ -3,7 +3,7 @@ using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Application.Interfaces.Services;
 using WritingApp.Domain.Entities;
 
-namespace WritingApp.Application.Writings.Services;
+namespace WritingApp.Application.Services.Writings;
 
 public class WritingService(IWritingsRepository writingRepository) : IWritingService
 {

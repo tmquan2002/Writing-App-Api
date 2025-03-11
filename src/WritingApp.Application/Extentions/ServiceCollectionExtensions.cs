@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WritingApp.Application.Auth.Services;
 using WritingApp.Application.Interfaces.Services;
-using WritingApp.Application.Writings.Services;
+using WritingApp.Application.Services.Auths;
+using WritingApp.Application.Services.Writings;
 
 namespace WritingApp.Application.Extentions
 {

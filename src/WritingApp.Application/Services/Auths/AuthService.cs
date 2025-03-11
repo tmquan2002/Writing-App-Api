@@ -2,7 +2,7 @@
 using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Application.Interfaces.Services;
 
-namespace WritingApp.Application.Auth.Services;
+namespace WritingApp.Application.Services.Auths;
 
 public class AuthService(IAuthRepository authRepository) : IAuthService
 {
