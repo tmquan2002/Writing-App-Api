@@ -8,7 +8,7 @@ namespace WritingApp.Domain.DomainInterface
 {
     public interface IUser
     {
-        Guid Id { get; } 
+        string Id { get; } 
         string? Fullname { get; }
         DateOnly DateOfBirth { get; }
         string? Nationality { get;}

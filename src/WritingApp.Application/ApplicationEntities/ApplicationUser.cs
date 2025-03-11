@@ -9,7 +9,7 @@ using WritingApp.Domain.Entities;
 
 namespace WritingApp.Application.ApplicationEntities
 {
-    public class ApplicationUser : IdentityUser, IUser // Application User cũng implement IUser
+    public class ApplicationUser : IdentityUser, IUser
     {
         public string? Fullname { get; set; }
         public DateOnly DateOfBirth { get; set; }
@@ -17,7 +17,7 @@ namespace WritingApp.Application.ApplicationEntities
         public string? Gender { get; set; }
         public List<Writing>? Writings { get; set; } = new List<Writing>();
 
-        Guid IUser.Id => Guid.Parse(this.Id);
+        string IUser.Id => Id;
         //string IUser.Fullname => Fullname ?? "";
         //DateOnly IUser.DateOfBirth => DateOfBirth; 
         //string IUser.Nationality => Nationality ?? "";

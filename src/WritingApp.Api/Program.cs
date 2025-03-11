@@ -1,4 +1,5 @@
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
+using WritingApp.Application.ApplicationEntities;
 using WritingApp.Application.Extentions;
 using WritingApp.Domain.Entities;
 using WritingApp.Infrastructure.Extentions;
@@ -35,6 +36,10 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+
+
+
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -62,7 +67,7 @@ app.UseHttpsRedirection();
 
 app.MapGroup("api/auth")
     .WithTags("Auth")
-    .MapIdentityApi<User>();
+    .MapIdentityApi<ApplicationUser>();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -12,5 +12,5 @@ public class Writing
     public string? Article { get; set; } = "";
     public bool Completed { get; set; } = false;
     public IUser? Author { get; set; } // Kiểu là IUser interface
-    public Guid AuthorId { get; set; }
+    public string AuthorId { get; set; } = "";
 }
