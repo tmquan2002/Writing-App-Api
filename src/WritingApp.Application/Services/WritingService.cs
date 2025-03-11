@@ -1,9 +1,9 @@
-﻿using WritingApp.Application.Dto.Writings;
+﻿using WritingApp.Application.Dto;
 using WritingApp.Application.Interfaces.Repository;
 using WritingApp.Application.Interfaces.Services;
 using WritingApp.Domain.Entities;
 
-namespace WritingApp.Application.Services.Writings;
+namespace WritingApp.Application.Services;
 
 public class WritingService(IWritingsRepository writingRepository) : IWritingService
 {

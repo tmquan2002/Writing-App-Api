@@ -1,4 +1,4 @@
-﻿using WritingApp.Application.Dto.Writings;
+﻿using WritingApp.Application.Dto;
 
 namespace WritingApp.Application.Interfaces.Services
 {

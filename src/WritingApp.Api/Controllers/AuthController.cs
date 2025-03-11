@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WritingApp.Application.Dto.Auths;
-using WritingApp.Application.Interfaces.Services;
+using WritingApp.Application.Dto;
 
 namespace WritingApp.API.Controllers;
 
 [ApiController]
 [Route("api/auth")]
 [Authorize]
-public class AuthController(IAuthService authService) : ControllerBase
+public class AuthController(IAuthInteractor authInteractor) : ControllerBase
 {
     //[HttpPost("login")]
     //public async Task<IActionResult> Login([FromBody] LoginDto model)
@@ -41,7 +40,7 @@ public class AuthController(IAuthService authService) : ControllerBase
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (string.IsNullOrEmpty(userId)) return Unauthorized("User not found");
 
-        var user = await authService.GetInfo(userId);
+        var user = await authInteractor.GetInfo(userId);
         if (user == null) return NotFound("User not found");
 
         return Ok(user);
@@ -51,7 +50,7 @@ public class AuthController(IAuthService authService) : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> GetUserById(string id)
     {
-        var user = await authService.GetInfo(id);
+        var user = await authInteractor.GetInfo(id);
         if (user == null) return NotFound("User not found");
 
         return Ok(user);
@@ -65,7 +64,7 @@ public class AuthController(IAuthService authService) : ControllerBase
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        var result = await authService.UpdateInfo(userId, dto);
+        var result = await authInteractor.UpdateInfo(userId, dto);
         if (!result) return NotFound();
 
         return Ok();

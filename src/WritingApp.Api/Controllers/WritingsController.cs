@@ -1,21 +1,20 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using WritingApp.Application.Dto.Writings;
-using WritingApp.Application.Interfaces.Services;
+using WritingApp.Application.Dto;
 
 namespace WritingApp.API.Controllers;
 
 [ApiController]
 [Route("api/writings")]
 [Authorize]
-public class WritingsController(IWritingService writingService) : ControllerBase
+public class WritingsController(IWritingInteractor writingInteractor) : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]
     public async Task<IActionResult> GetAll()
     {
-        var writings = await writingService.GetAllAsync();
+        var writings = await writingInteractor.GetAllAsync();
         return Ok(writings);
     }
 
@@ -23,7 +22,7 @@ public class WritingsController(IWritingService writingService) : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> GetById(int id)
     {
-        var writing = await writingService.GetByIdAsync(id);
+        var writing = await writingInteractor.GetByIdAsync(id);
         if (writing == null) return NotFound();
         return Ok(writing);
     }
@@ -36,8 +35,9 @@ public class WritingsController(IWritingService writingService) : ControllerBase
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         if (string.IsNullOrEmpty(userId))
             return Unauthorized("User Not Found");
-        var id = await writingService.CreateAsync(dto, userId);
-        return CreatedAtAction(nameof(GetById), new { id }, dto);
+
+        await writingInteractor.CreateAsync(dto, userId);
+        return Ok();
     }
 
     [HttpPut("{id}")]
@@ -45,7 +45,7 @@ public class WritingsController(IWritingService writingService) : ControllerBase
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        var result = await writingService.UpdateAsync(id, dto);
+        var result = await writingInteractor.UpdateAsync(id, dto);
         if (!result) return NotFound();
 
         return Ok();
@@ -54,7 +54,7 @@ public class WritingsController(IWritingService writingService) : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var result = await writingService.DeleteAsync(id);
+        var result = await writingInteractor.DeleteAsync(id);
         if (!result) return NotFound();
 
         return Ok();
