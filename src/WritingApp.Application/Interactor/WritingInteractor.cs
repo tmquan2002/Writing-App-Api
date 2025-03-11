@@ -10,6 +10,11 @@ public class WritingInteractor(IWritingService writingService) : IWritingInterac
         return await writingService.GetAllAsync();
     }
 
+    public async Task<IEnumerable<WritingCurrentDto>> GetAllCurrentAsync(string userId)
+    {
+        return await writingService.GetAllCurrentAsync(userId);
+    }
+
     public async Task<WritingDto?> GetByIdAsync(int id)
     {
         if (id <= 0) return null;

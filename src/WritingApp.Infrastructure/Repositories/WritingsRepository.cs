@@ -15,6 +15,13 @@ internal class WritingsRepository(WritingsDbContext dbContext) : IWritingsReposi
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<Writing>> GetAllCurrentAsync(string userId)
+    {
+        return await dbContext.Writings
+            .Where(w => w.UserId == userId)
+            .ToListAsync();
+    }
+
     public async Task<Writing?> GetByIdAsync(int id)
     {
         return await dbContext.Writings

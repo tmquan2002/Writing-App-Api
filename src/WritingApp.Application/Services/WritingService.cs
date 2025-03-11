@@ -23,6 +23,21 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
         });
     }
 
+    public async Task<IEnumerable<WritingCurrentDto>> GetAllCurrentAsync(string userId)
+    {
+        var writings = await writingRepository.GetAllCurrentAsync(userId);
+        return writings.Select(w => new WritingCurrentDto
+        {
+            Id = w.Id,
+            Title = w.Title,
+            Type = w.Type ?? "",
+            PublishedDate = w.PublishedDate,
+            Description = w.Description ?? "",
+            Article = w.Article ?? "",
+            Completed = w.Completed
+        });
+    }
+
     public async Task<WritingDto?> GetByIdAsync(int id)
     {
         var writing = await writingRepository.GetByIdAsync(id);

@@ -10,30 +10,6 @@ namespace WritingApp.API.Controllers;
 [Authorize]
 public class AuthController(IAuthInteractor authInteractor) : ControllerBase
 {
-    //[HttpPost("login")]
-    //public async Task<IActionResult> Login([FromBody] LoginDto model)
-    //{
-    //    var user = await _userManager.FindByEmailAsync(model.Email);
-    //    if (user == null)
-    //    {
-    //        return Unauthorized(new { message = "Invalid email or password" });
-    //    }
-
-    //    var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-    //    if (!result.Succeeded)
-    //    {
-    //        return Unauthorized(new { message = "Invalid email or password" });
-    //    }
-
-    //    var token = _tokenService.GenerateToken(user);
-
-    //    return Ok(new
-    //    {
-    //        token,
-    //        fullname = user.Fullname
-    //    });
-    //}
-
     [HttpGet("me")]
     public async Task<IActionResult> GetCurrent()
     {

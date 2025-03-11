@@ -18,6 +18,16 @@ public class WritingsController(IWritingInteractor writingInteractor) : Controll
         return Ok(writings);
     }
 
+    [HttpGet("me")]
+    public async Task<IActionResult> GetAllCurrent()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId)) return Unauthorized("User not found");
+
+        var writings = await writingInteractor.GetAllCurrentAsync(userId);
+        return Ok(writings);
+    }
+
     [HttpGet("{id}")]
     [AllowAnonymous]
     public async Task<IActionResult> GetById(int id)
@@ -33,8 +43,7 @@ public class WritingsController(IWritingInteractor writingInteractor) : Controll
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
         var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userId))
-            return Unauthorized("User Not Found");
+        if (string.IsNullOrEmpty(userId)) return Unauthorized("User not found");
 
         await writingInteractor.CreateAsync(dto, userId);
         return Ok();
