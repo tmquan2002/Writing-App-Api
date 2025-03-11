@@ -49,7 +49,7 @@ public class WritingService(IWritingsRepository writingRepository) : IWritingSer
             Description = writing.Description,
             Article = writing.Article,
             Completed = writing.Completed,
-            UserId = userId
+            AuthorId = userId.Equals("") ? Guid.Empty : Guid.Parse(userId)
         };
 
         await writingRepository.AddAsync(newWriting);

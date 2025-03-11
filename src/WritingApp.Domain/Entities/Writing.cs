@@ -1,4 +1,6 @@
-﻿namespace WritingApp.Domain.Entities;
+﻿using WritingApp.Domain.DomainInterface;
+
+namespace WritingApp.Domain.Entities;
 
 public class Writing
 {
@@ -9,6 +11,6 @@ public class Writing
     public string? Description { get; set; } = "";
     public string? Article { get; set; } = "";
     public bool Completed { get; set; } = false;
-    public User? Author { get; set; }
-    public string UserId { get; set; } = "";
+    public IUser? Author { get; set; } // Kiểu là IUser interface
+    public Guid AuthorId { get; set; }
 }
