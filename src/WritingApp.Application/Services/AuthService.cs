@@ -11,7 +11,6 @@ public class AuthService(IAuthRepository authRepository) : IAuthService
         var user = await authRepository.GetInfo(userId);
         return user == null ? null : new UserDto
         {
-            Email = user.Email ?? "",
             DateOfBirth = user.DateOfBirth,
             Fullname = user.Fullname ?? "",
             Gender = user.Gender ?? "",

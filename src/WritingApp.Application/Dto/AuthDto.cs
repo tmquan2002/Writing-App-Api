@@ -14,7 +14,6 @@ namespace WritingApp.Application.Dto
 
     public class UserDto
     {
-        public required string Email { get; set; }
         public string? Fullname { get; set; }
         public DateOnly DateOfBirth { get; set; }
         public string? Nationality { get; set; }
